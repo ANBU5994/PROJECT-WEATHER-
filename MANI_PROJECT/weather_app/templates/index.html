@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="tab-header">
+            <button class="tab-btn active" id="tab-about">About Company</button>
+            <button class="tab-btn" id="tab-weather">Weather</button>
+        </div>
+        <div id="tab-content-about" class="tab-content" style="display:block;">
+            <h1>About Our Company</h1>
+            <p style="margin-top:10px; color:#2d3e50;">Welcome to our innovative weather prediction platform!<br>
+            We provide accurate, real-time weather updates and forecasts for cities worldwide.<br>
+            Our mission is to empower users with reliable weather data for better planning and safety.<br><br>
+            <strong>Contact:</strong> info@weathercompany.com<br>
+            <strong>Location:</strong> Chennai, India</p>
+        </div>
+        <div id="tab-content-weather" class="tab-content" style="display:none;">
+            <h1>Weather Prediction</h1>
+            <div class="search-box">
+                <input type="text" id="city-input" placeholder="Enter city name">
+                <button id="search-btn">Search</button>
+            </div>
+            <div id="spinner" class="spinner" style="display:none;"></div>
+            <div id="weather-result" class="fade-in"></div>
+            <div id="forecast-cards" class="forecast-row"></div>
+            <div id="developer-info" style="margin-top:20px; color:#2d3e50; font-size:0.95rem;"></div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script>
+    // Tab switching logic
+    document.getElementById('tab-about').onclick = function() {
+        document.getElementById('tab-content-about').style.display = 'block';
+        document.getElementById('tab-content-weather').style.display = 'none';
+        this.classList.add('active');
+        document.getElementById('tab-weather').classList.remove('active');
+    };
+    document.getElementById('tab-weather').onclick = function() {
+        document.getElementById('tab-content-about').style.display = 'none';
+        document.getElementById('tab-content-weather').style.display = 'block';
+        this.classList.add('active');
+        document.getElementById('tab-about').classList.remove('active');
+    };
+    </script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
